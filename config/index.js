@@ -29,5 +29,6 @@ module.exports = {
   
     JWT_KEY: process.env.JWT_KEY,
     JWT_EXP: process.env.JWT_EXP,
+    SALT: process.env.SALT,
   
 }
