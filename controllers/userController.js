@@ -1,6 +1,7 @@
-const model = require('./../models/index')
-const bcrypt = require('bcrypt')
-const config = require('./../config/index')
+const model = require('./../models/index');
+const bcrypt = require('bcrypt');
+const config = require('./../config/index');
+const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res, next) => {
     try {
@@ -39,10 +40,49 @@ exports.register = async (req, res, next) => {
     }
 }
 
-exports.login = (req, res, next) => {
+exports.login = async (req, res, next) => {
     try {
-          
-    } catch (error) {
-        
+
+    const { username, password } = req.body
+
+    const user = await model.User.findOne({
+        where: { username: username },
+    });
+
+    if(!user){
+        const error = new Error("User Not Found!");
+        error.statusCode  = 404;
+        throw error;
     }
+
+    const isValid = await user.checkPassword(password, user.password);
+    if (!isValid) {
+      const error = new Error("Invalid password!");
+      error.statusCode = 401;
+      throw error;
+    }
+
+    const token = await user.createToken(user.id, user.role);
+    const expires_in = jwt.decode(token);
+
+    return res.status(200).json({
+      access_token: token,
+      expires_in: expires_in.exp,
+      token_type: "Bearer",
+    });
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.profile = (req, res, next) => {
+  try {
+     res.status(200).json({
+        message: "get data successfully!",
+        data: req.user
+     });
+  } catch (error) {
+    next(error)
+  }
 }

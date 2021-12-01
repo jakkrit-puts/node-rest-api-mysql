@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const passport = require('passport');
 const cors = require('cors');
 const errorHandler = require('./utils/errorHandler')
 
@@ -10,7 +11,9 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 
 const app = express();
+
 app.use(cors())
+app.use(passport.initialize());
 
 app.use(logger('dev'));
 app.use(express.json());
