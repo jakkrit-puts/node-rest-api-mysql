@@ -78,6 +78,7 @@ exports.login = async (req, res, next) => {
 
 exports.profile = (req, res, next) => {
   try {
+    
      res.status(200).json({
         message: "get data successfully!",
         data: req.user

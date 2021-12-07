@@ -9,6 +9,8 @@ const errorHandler = require('./utils/errorHandler')
 
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
+const unitRouter = require('./routes/unit');
+const categoryRouter = require('./routes/category');
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/unit', unitRouter);
+app.use('/category', categoryRouter);
 
 app.use(errorHandler);
 
