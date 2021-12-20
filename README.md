@@ -1,15 +1,13 @@
 
-
+## REST API: NodeJS (Express) + Mysql (Sequelize ORM) using JWT
 ### Install  NPM Package
 ```
 $ npm install
 ```
-
 ### Usage
 1. Copy .env.exam  -> ส้รางไฟล์ใหม่ชื่อ .env
 2. Setup .env แก้ไขชื่อดาต้าเบสและรหัสผ่านให้ถูกต้อง, ใส่ jwt_key ให้เรียบร้อย
 3. สร้างตารางโดยใช้คำสั่งด้านล่าง
-
 ```
 $ npx sequelize db:migrate   --> คำสั่งส้รางตาราง  
 ```
