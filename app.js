@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
 const unitRouter = require('./routes/unit');
 const categoryRouter = require('./routes/category');
+const productRouter = require('./routes/product');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/unit', unitRouter);
 app.use('/category', categoryRouter);
+app.use('/product', productRouter);
 
 app.use(errorHandler);
 
