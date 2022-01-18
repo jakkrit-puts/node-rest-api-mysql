@@ -28,3 +28,5 @@ http://localhost:3002/user/register
 http://localhost:3002/user/login
 http://localhost:3002/user/profile
 ```
+### Example 
+![api](https://user-images.githubusercontent.com/67111961/149991388-7be4d540-ed97-47a1-a937-266351de979e.PNG)
